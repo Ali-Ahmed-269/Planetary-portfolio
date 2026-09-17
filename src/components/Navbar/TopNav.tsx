@@ -1,6 +1,6 @@
 "use client";
 
-import { useState, useEffect } from "react";
+import { useState, useEffect, useRef } from "react";
 import Image from "next/image";
 import { motion, useScroll, useTransform, AnimatePresence } from "framer-motion";
 import { Menu, X } from "lucide-react";
@@ -22,6 +22,9 @@ export default function TopNav() {
   const [photoOpen, setPhotoOpen] = useState(false);
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
 
+  const isManualScrollingRef = useRef(false);
+  const scrollTimeoutRef = useRef<NodeJS.Timeout | null>(null);
+
   const { scrollY } = useScroll();
 
   /* Scroll-driven transforms */
@@ -38,14 +41,31 @@ export default function TopNav() {
       const el = document.getElementById(id);
       if (!el) return;
       const obs = new IntersectionObserver(
-        ([entry]) => { if (entry.isIntersecting) setActiveSection(id); },
-        { threshold: 0.4 }
+        ([entry]) => {
+          if (entry.isIntersecting && !isManualScrollingRef.current) {
+            setActiveSection(id);
+          }
+        },
+        { threshold: 0.3 }
       );
       obs.observe(el);
       observers.push(obs);
     });
 
-    return () => observers.forEach((o) => o.disconnect());
+    const handleScrollEnd = () => {
+      if (scrollTimeoutRef.current) clearTimeout(scrollTimeoutRef.current);
+      scrollTimeoutRef.current = setTimeout(() => {
+        isManualScrollingRef.current = false;
+      }, 100);
+    };
+
+    window.addEventListener("scrollend", handleScrollEnd);
+
+    return () => {
+      observers.forEach((o) => o.disconnect());
+      window.removeEventListener("scrollend", handleScrollEnd);
+      if (scrollTimeoutRef.current) clearTimeout(scrollTimeoutRef.current);
+    };
   }, []);
 
   const handleNavClick = (
@@ -54,8 +74,19 @@ export default function TopNav() {
   ) => {
     e.preventDefault();
     setMobileMenuOpen(false);
+
+    const id = href.replace("#", "");
+    setActiveSection(id);
+    isManualScrollingRef.current = true;
+
+    if (scrollTimeoutRef.current) clearTimeout(scrollTimeoutRef.current);
+
     const target = document.querySelector(href);
     if (target) target.scrollIntoView({ behavior: "smooth" });
+
+    scrollTimeoutRef.current = setTimeout(() => {
+      isManualScrollingRef.current = false;
+    }, 1000);
   };
 
   return (

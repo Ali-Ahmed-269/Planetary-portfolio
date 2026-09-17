@@ -1,6 +1,6 @@
 "use client";
 
-import { useEffect, useState } from "react";
+import { useEffect, useState, useRef } from "react";
 import { motion, Variants } from "framer-motion";
 import {
   Home,
@@ -106,6 +106,9 @@ const itemVariants: Variants = {
 export default function Sidebar() {
   const [activeSection, setActiveSection] = useState<string>("home");
 
+  const isManualScrollingRef = useRef(false);
+  const scrollTimeoutRef = useRef<NodeJS.Timeout | null>(null);
+
   /* Track active section via IntersectionObserver */
   useEffect(() => {
     const sectionIds = NAV_ITEMS.map((item) => item.id);
@@ -117,15 +120,30 @@ export default function Sidebar() {
 
       const observer = new IntersectionObserver(
         ([entry]) => {
-          if (entry.isIntersecting) setActiveSection(id);
+          if (entry.isIntersecting && !isManualScrollingRef.current) {
+            setActiveSection(id);
+          }
         },
-        { threshold: 0.4 }
+        { threshold: 0.3 }
       );
       observer.observe(el);
       observers.push(observer);
     });
 
-    return () => observers.forEach((obs) => obs.disconnect());
+    const handleScrollEnd = () => {
+      if (scrollTimeoutRef.current) clearTimeout(scrollTimeoutRef.current);
+      scrollTimeoutRef.current = setTimeout(() => {
+        isManualScrollingRef.current = false;
+      }, 100);
+    };
+
+    window.addEventListener("scrollend", handleScrollEnd);
+
+    return () => {
+      observers.forEach((obs) => obs.disconnect());
+      window.removeEventListener("scrollend", handleScrollEnd);
+      if (scrollTimeoutRef.current) clearTimeout(scrollTimeoutRef.current);
+    };
   }, []);
 
   const handleNavClick = (
@@ -133,8 +151,19 @@ export default function Sidebar() {
     href: string
   ) => {
     e.preventDefault();
+
+    const id = href.replace("#", "");
+    setActiveSection(id);
+    isManualScrollingRef.current = true;
+
+    if (scrollTimeoutRef.current) clearTimeout(scrollTimeoutRef.current);
+
     const target = document.querySelector(href);
     if (target) target.scrollIntoView({ behavior: "smooth" });
+
+    scrollTimeoutRef.current = setTimeout(() => {
+      isManualScrollingRef.current = false;
+    }, 1000);
   };
 
   return (
