@@ -110,9 +110,9 @@ const CONTACT_CARDS: ContactCard[] = [
 ];
 
 const SOCIAL_LINKS = [
-  { label: "GitHub", href: "#", icon: GithubIcon },
-  { label: "LinkedIn", href: "#", icon: LinkedinIcon },
-  { label: "Instagram", href: "#", icon: InstagramIcon },
+  { label: "GitHub", href: "https://github.com/Ali-Ahmed-269", icon: GithubIcon },
+  { label: "LinkedIn", href: "https://www.linkedin.com/in/ali-ahmed-489692328/", icon: LinkedinIcon },
+  { label: "Instagram", href: "https://www.instagram.com/ali_swati_26?stkn=MXEyM2wxdDBmbWxkcA==", icon: InstagramIcon },
 ];
 
 /* ─── Form Field Styles ──────────────────────────────────────────────────── */

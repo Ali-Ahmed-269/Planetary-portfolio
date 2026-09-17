@@ -2,12 +2,13 @@
 
 import { motion, Variants } from "framer-motion";
 import { useEffect, useState } from "react";
+import { Rocket, Users, Trophy } from "lucide-react";
 import ParticleBackground from "./ParticleBackground";
 import SaturnPlanet from "./SaturnPlanet";
 
 /* ─── Type definitions ───────────────────────────────────────────────────── */
 interface StatItem {
-  icon: string;
+  icon: React.ElementType;
   value: string;
   label: string;
 }
@@ -19,9 +20,9 @@ interface TechBadge {
 
 /* ─── Mock Data ──────────────────────────────────────────────────────────── */
 const STATS: StatItem[] = [
-  { icon: "🚀", value: "8+", label: "Projects Completed" },
-  { icon: "👥", value: "2+", label: "Years Learning" },
-  { icon: "🏆", value: "1", label: "Goal: Keep Improving" },
+  { icon: Rocket, value: "8+", label: "Projects Completed" },
+  { icon: Users, value: "2+", label: "Years Learning" },
+  { icon: Trophy, value: "1", label: "Goal: Keep Improving" },
 ];
 
 const TECH_BADGES: TechBadge[] = [
@@ -173,24 +174,27 @@ export default function HeroSection() {
             variants={leftItemVariants}
             className="pt-6 md:pt-10 border-t border-white/5 grid grid-cols-3 gap-4 w-full"
           >
-            {STATS.map((stat, idx) => (
-              <div
-                key={stat.label}
-                className={`flex flex-col space-y-1.5 ${
-                  idx > 0 ? "border-l border-white/5 pl-4 sm:pl-6" : ""
-                }`}
-              >
-                <div className="flex items-center space-x-2">
-                  <span className="text-base sm:text-lg md:text-xl">{stat.icon}</span>
-                  <span className="text-xl sm:text-2xl md:text-3xl font-bold text-white font-display">
-                    {stat.value}
+            {STATS.map((stat, idx) => {
+              const Icon = stat.icon;
+              return (
+                <div
+                  key={stat.label}
+                  className={`flex flex-col space-y-1.5 ${
+                    idx > 0 ? "border-l border-white/5 pl-4 sm:pl-6" : ""
+                  }`}
+                >
+                  <div className="flex items-center space-x-2">
+                    <Icon className="w-5 h-5 sm:w-6 sm:h-6 text-[#2F80FF] shrink-0" strokeWidth={2} />
+                    <span className="text-xl sm:text-2xl md:text-3xl font-bold text-white font-display">
+                      {stat.value}
+                    </span>
+                  </div>
+                  <span className="text-text-muted text-xs md:text-sm font-light">
+                    {stat.label}
                   </span>
                 </div>
-                <span className="text-text-muted text-xs md:text-sm font-light">
-                  {stat.label}
-                </span>
-              </div>
-            ))}
+              );
+            })}
           </motion.div>
         </motion.div>
       </div>
