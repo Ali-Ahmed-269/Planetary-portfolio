@@ -3,6 +3,7 @@
 import { useState, useEffect } from "react";
 import Image from "next/image";
 import { motion, useScroll, useTransform, AnimatePresence } from "framer-motion";
+import { Menu, X } from "lucide-react";
 
 /* ─── Data ───────────────────────────────────────────────────────────────── */
 const NAV_LINKS = [
@@ -19,6 +20,7 @@ export default function TopNav() {
   const [activeSection, setActiveSection] = useState<string>("home");
   const [hovered, setHovered] = useState<string | null>(null);
   const [photoOpen, setPhotoOpen] = useState(false);
+  const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
 
   const { scrollY } = useScroll();
 
@@ -51,6 +53,7 @@ export default function TopNav() {
     href: string
   ) => {
     e.preventDefault();
+    setMobileMenuOpen(false);
     const target = document.querySelector(href);
     if (target) target.scrollIntoView({ behavior: "smooth" });
   };
@@ -61,14 +64,9 @@ export default function TopNav() {
         initial={{ opacity: 0, y: -12 }}
         animate={{ opacity: 1, y: 0 }}
         transition={{ duration: 0.5, ease: "easeOut", delay: 0.3 }}
+        className="fixed top-0 left-0 md:left-[60px] right-0 z-50"
         style={{
-          position: "fixed",
-          top: 0,
-          left: 60,      /* sidebar width */
-          right: 0,
           height: navHeight,
-          zIndex: 50,
-          overflow: "hidden",
         }}
       >
         {/* Blurred dark background */}
@@ -103,9 +101,10 @@ export default function TopNav() {
             height: "100%",
             display: "flex",
             alignItems: "center",
-            paddingLeft: "1.5rem",
-            paddingRight: "1.5rem",
-            gap: "2rem",
+            justifyContent: "space-between",
+            paddingLeft: "1rem",
+            paddingRight: "1rem",
+            gap: "0.75rem",
           }}
         >
           {/* ── Logo ── */}
@@ -156,6 +155,7 @@ export default function TopNav() {
                   fontSize: "1rem",
                   color: "#ffffff",
                   lineHeight: 1,
+                  whiteSpace: "nowrap",
                 }}
               >
                 Ali{" "}
@@ -164,8 +164,8 @@ export default function TopNav() {
             </motion.a>
           </div>
 
-          {/* ── Center nav pill ── */}
-          <nav style={{ flex: 1, display: "flex", justifyContent: "center" }}>
+          {/* ── Center nav pill (hidden below md breakpoint) ── */}
+          <nav className="hidden md:flex flex-1 justify-center">
             <div
               style={{
                 display: "flex",
@@ -226,34 +226,92 @@ export default function TopNav() {
             </div>
           </nav>
 
-          {/* ── CTA button ── */}
-          <motion.a
-            href="#contact"
-            onClick={(e) => handleNavClick(e, "#contact")}
-            style={{
-              flexShrink: 0,
-              padding: "0.4rem 1.25rem",
-              borderRadius: "9999px",
-              border: "1.5px solid #f97316",
-              color: "#f97316",
-              fontFamily: "'Inter', sans-serif",
-              fontSize: "0.875rem",
-              fontWeight: 500,
-              textDecoration: "none",
-              whiteSpace: "nowrap",
-            }}
-            whileHover={{
-              backgroundColor: "#f97316",
-              color: "#ffffff",
-              scale: 1.03,
-            }}
-            whileTap={{ scale: 0.97 }}
-            transition={{ duration: 0.18 }}
-          >
-            Let&apos;s Build →
-          </motion.a>
+          {/* ── Right section: CTA button & Mobile Hamburger ── */}
+          <div className="flex items-center gap-2 shrink-0">
+            <motion.a
+              href="#contact"
+              onClick={(e) => handleNavClick(e, "#contact")}
+              style={{
+                flexShrink: 0,
+                padding: "0.35rem 0.9rem",
+                borderRadius: "9999px",
+                border: "1.5px solid #f97316",
+                color: "#f97316",
+                fontFamily: "'Inter', sans-serif",
+                fontSize: "0.8125rem",
+                fontWeight: 500,
+                textDecoration: "none",
+                whiteSpace: "nowrap",
+              }}
+              whileHover={{
+                backgroundColor: "#f97316",
+                color: "#ffffff",
+                scale: 1.03,
+              }}
+              whileTap={{ scale: 0.97 }}
+              transition={{ duration: 0.18 }}
+            >
+              Let&apos;s Build →
+            </motion.a>
+
+            {/* Hamburger button (visible only below md) */}
+            <button
+              type="button"
+              onClick={() => setMobileMenuOpen((prev) => !prev)}
+              className="flex md:hidden items-center justify-center w-9 h-9 rounded-lg border border-white/10 bg-white/5 text-zinc-300 hover:text-white hover:bg-white/10 transition-colors cursor-pointer shrink-0"
+              aria-label={mobileMenuOpen ? "Close menu" : "Open menu"}
+            >
+              {mobileMenuOpen ? <X size={20} /> : <Menu size={20} />}
+            </button>
+          </div>
         </div>
       </motion.header>
+
+      {/* ── Mobile Dropdown Menu & Backdrop ── */}
+      <AnimatePresence>
+        {mobileMenuOpen && (
+          <>
+            {/* Backdrop overlay */}
+            <motion.div
+              initial={{ opacity: 0 }}
+              animate={{ opacity: 1 }}
+              exit={{ opacity: 0 }}
+              transition={{ duration: 0.2 }}
+              className="fixed inset-0 top-[60px] left-0 md:left-[60px] bg-black/60 backdrop-blur-xs z-40 md:hidden"
+              onClick={() => setMobileMenuOpen(false)}
+            />
+
+            {/* Dropdown panel */}
+            <motion.div
+              initial={{ opacity: 0, y: -10 }}
+              animate={{ opacity: 1, y: 0 }}
+              exit={{ opacity: 0, y: -10 }}
+              transition={{ duration: 0.2, ease: "easeOut" }}
+              className="fixed top-[60px] left-0 md:left-[60px] right-0 z-40 md:hidden bg-[#0a0a0a]/95 border-b border-white/10 shadow-2xl backdrop-blur-xl px-4 py-3 flex flex-col gap-1"
+            >
+              {NAV_LINKS.map((link) => {
+                const id = link.href.replace("#", "");
+                const isActive = activeSection === id;
+
+                return (
+                  <a
+                    key={link.label}
+                    href={link.href}
+                    onClick={(e) => handleNavClick(e, link.href)}
+                    className={`min-h-[44px] flex items-center px-4 rounded-xl text-sm font-medium transition-colors ${
+                      isActive
+                        ? "text-orange-500 bg-orange-500/10 border border-orange-500/20"
+                        : "text-zinc-300 hover:text-white hover:bg-white/5"
+                    }`}
+                  >
+                    {link.label}
+                  </a>
+                );
+              })}
+            </motion.div>
+          </>
+        )}
+      </AnimatePresence>
 
       {/* ── Photo Lightbox Modal ── */}
       <AnimatePresence>

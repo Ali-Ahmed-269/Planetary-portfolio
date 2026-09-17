@@ -142,7 +142,7 @@ export default function Sidebar() {
       initial="hidden"
       animate="visible"
       variants={containerVariants}
-      className="fixed left-0 top-0 h-screen w-[60px] z-50 flex flex-col items-center"
+      className="fixed left-0 top-0 h-screen w-[60px] z-50 hidden md:flex flex-col items-center"
       style={{
         backgroundColor: "#0a0a0a",
         borderRight: "1px solid rgba(255,255,255,0.05)",

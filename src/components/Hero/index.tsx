@@ -87,7 +87,7 @@ export default function HeroSection() {
   return (
     <section
       id="home"
-      className="relative min-h-screen overflow-hidden bg-[#0a0a0a] pl-[60px]"
+      className="relative min-h-screen overflow-hidden bg-[#0a0a0a]"
       style={{ fontFamily: "var(--font-inter), sans-serif" }}
     >
       {/* ── 1. PARTICLE BACKGROUND (z-0) ── */}
@@ -111,7 +111,7 @@ export default function HeroSection() {
           variants={containerVariants}
           initial="hidden"
           animate="visible"
-          className="flex flex-col space-y-6 md:space-y-8"
+          className="flex flex-col space-y-6 md:space-y-8 text-left items-start"
         >
           {/* Label with blinking cursor */}
           <motion.div variants={leftItemVariants} className="flex items-center space-x-1">
@@ -171,7 +171,7 @@ export default function HeroSection() {
           {/* Stats Bar */}
           <motion.div
             variants={leftItemVariants}
-            className="pt-6 md:pt-10 border-t border-white/5 grid grid-cols-3 gap-4"
+            className="pt-6 md:pt-10 border-t border-white/5 grid grid-cols-3 gap-4 w-full"
           >
             {STATS.map((stat, idx) => (
               <div
@@ -196,7 +196,7 @@ export default function HeroSection() {
       </div>
 
       {/* ── 5. TECH BADGES (z-[10]) ── */}
-      <div className="absolute right-4 top-1/2 -translate-y-1/2 z-[10] flex flex-col gap-3">
+      <div className="absolute right-4 top-1/2 -translate-y-1/2 z-[10] hidden md:flex flex-col gap-3">
         {TECH_BADGES.map((badge, idx) => (
           <motion.div
             key={badge.name}

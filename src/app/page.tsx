@@ -11,15 +11,8 @@ export default function Home() {
     <>
       <Navbar />
 
-      {/* pl-[60px] offsets the sidebar; pt-[60px] offsets the top nav */}
-      <main
-        style={{
-          paddingLeft: "60px",
-          paddingTop: "60px",
-          minHeight: "100vh",
-          backgroundColor: "#0a0a0a",
-        }}
-      >
+      {/* Responsive left padding: 0 on mobile, 60px on md+ when sidebar is visible */}
+      <main className="pl-0 md:pl-[60px] pt-[60px] min-h-screen bg-[#0a0a0a]">
         <HeroSection />
 
         <AboutSection />
