@@ -151,6 +151,7 @@ export default function ContactSection({ id = "contact" }: ContactSectionProps) 
   });
   const [sending, setSending] = useState(false);
   const [success, setSuccess] = useState(false);
+  const [errorMessage, setErrorMessage] = useState<string | null>(null);
   const [focusedField, setFocusedField] = useState<string | null>(null);
   const [hoveredCard, setHoveredCard] = useState<string | null>(null);
   const [hoveredSocial, setHoveredSocial] = useState<string | null>(null);
@@ -159,15 +160,45 @@ export default function ContactSection({ id = "contact" }: ContactSectionProps) 
     e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>
   ) => setForm((prev) => ({ ...prev, [e.target.name]: e.target.value }));
 
-  const handleSubmit = (e: React.FormEvent) => {
+  const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
     setSending(true);
-    setTimeout(() => {
+    setErrorMessage(null);
+
+    const accessKey = process.env.NEXT_PUBLIC_WEB3FORMS_KEY || "";
+
+    try {
+      const response = await fetch("https://api.web3forms.com/submit", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+          Accept: "application/json",
+        },
+        body: JSON.stringify({
+          access_key: accessKey,
+          name: form.name,
+          email: form.email,
+          subject: form.subject,
+          message: form.message,
+        }),
+      });
+
+      const result = await response.json();
+      if (result.success) {
+        setSuccess(true);
+        setForm({ name: "", email: "", subject: "", message: "" });
+      } else {
+        setErrorMessage(
+          result.message || "Failed to send message. Please try again."
+        );
+      }
+    } catch {
+      setErrorMessage(
+        "Something went wrong. Please check your network connection and try again."
+      );
+    } finally {
       setSending(false);
-      setSuccess(true);
-      setForm({ name: "", email: "", subject: "", message: "" });
-      setTimeout(() => setSuccess(false), 3000);
-    }, 2000);
+    }
   };
 
   const fieldStyle = (name: string): React.CSSProperties => ({
@@ -481,6 +512,24 @@ export default function ContactSection({ id = "contact" }: ContactSectionProps) 
                   viewport={{ once: true }}
                   className="flex flex-col space-y-4"
                 >
+                  {errorMessage && (
+                    <motion.div
+                      initial={{ opacity: 0, y: -10 }}
+                      animate={{ opacity: 1, y: 0 }}
+                      style={{
+                        padding: "0.75rem 1rem",
+                        borderRadius: "0.5rem",
+                        backgroundColor: "rgba(239, 68, 68, 0.1)",
+                        border: "1px solid rgba(239, 68, 68, 0.3)",
+                        color: "#ef4444",
+                        fontSize: "0.85rem",
+                        fontFamily: "'Inter', sans-serif",
+                      }}
+                    >
+                      {errorMessage}
+                    </motion.div>
+                  )}
+
                   {/* Name */}
                   <motion.div variants={formFieldVariants}>
                     <label
