@@ -35,13 +35,13 @@ export default function ParticleBackground() {
 
     // Particle geometries
     const whiteGeometry = new THREE.BufferGeometry();
-    const orangeGeometry = new THREE.BufferGeometry();
+    const blueGeometry = new THREE.BufferGeometry();
 
     const whiteCount = 2500;
-    const orangeCount = 500;
+    const blueCount = 500;
 
     const whitePositions = new Float32Array(whiteCount * 3);
-    const orangePositions = new Float32Array(orangeCount * 3);
+    const bluePositions = new Float32Array(blueCount * 3);
 
     // X: [-15, 15], Y: [-15, 15], Z: [-5, 5]
     for (let i = 0; i < whiteCount; i++) {
@@ -50,19 +50,19 @@ export default function ParticleBackground() {
       whitePositions[i * 3 + 2] = (Math.random() - 0.5) * 10;
     }
 
-    for (let i = 0; i < orangeCount; i++) {
-      orangePositions[i * 3] = (Math.random() - 0.5) * 30;
-      orangePositions[i * 3 + 1] = (Math.random() - 0.5) * 30;
-      orangePositions[i * 3 + 2] = (Math.random() - 0.5) * 10;
+    for (let i = 0; i < blueCount; i++) {
+      bluePositions[i * 3] = (Math.random() - 0.5) * 30;
+      bluePositions[i * 3 + 1] = (Math.random() - 0.5) * 30;
+      bluePositions[i * 3 + 2] = (Math.random() - 0.5) * 10;
     }
 
     whiteGeometry.setAttribute(
       "position",
       new THREE.BufferAttribute(whitePositions, 3)
     );
-    orangeGeometry.setAttribute(
+    blueGeometry.setAttribute(
       "position",
-      new THREE.BufferAttribute(orangePositions, 3)
+      new THREE.BufferAttribute(bluePositions, 3)
     );
 
     // Particle Materials
@@ -74,8 +74,8 @@ export default function ParticleBackground() {
       depthWrite: false,
     });
 
-    const orangeMaterial = new THREE.PointsMaterial({
-      color: 0xf97316,
+    const blueMaterial = new THREE.PointsMaterial({
+      color: 0x2f80ff,
       size: 0.025,
       transparent: true,
       opacity: 0.6,
@@ -84,10 +84,10 @@ export default function ParticleBackground() {
 
     // Meshes
     const whiteParticles = new THREE.Points(whiteGeometry, whiteMaterial);
-    const orangeParticles = new THREE.Points(orangeGeometry, orangeMaterial);
+    const blueParticles = new THREE.Points(blueGeometry, blueMaterial);
 
     scene.add(whiteParticles);
-    scene.add(orangeParticles);
+    scene.add(blueParticles);
 
     // Mouse parallax tracking
     let targetX = 0;
@@ -123,8 +123,8 @@ export default function ParticleBackground() {
       whiteParticles.rotation.y += 0.0003;
       whiteParticles.rotation.x += 0.0001;
 
-      orangeParticles.rotation.y += 0.0003;
-      orangeParticles.rotation.x += 0.0001;
+      blueParticles.rotation.y += 0.0003;
+      blueParticles.rotation.x += 0.0001;
 
       // Mouse Parallax smooth lerp
       camera.position.x += (targetX - camera.position.x) * 0.02;
@@ -145,9 +145,9 @@ export default function ParticleBackground() {
       window.removeEventListener("resize", handleResize);
 
       whiteGeometry.dispose();
-      orangeGeometry.dispose();
+      blueGeometry.dispose();
       whiteMaterial.dispose();
-      orangeMaterial.dispose();
+      blueMaterial.dispose();
       renderer.dispose();
     };
   }, []);

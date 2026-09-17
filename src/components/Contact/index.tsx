@@ -204,7 +204,7 @@ export default function ContactSection({ id = "contact" }: ContactSectionProps) 
   const fieldStyle = (name: string): React.CSSProperties => ({
     ...inputBase,
     borderColor:
-      focusedField === name ? "#f97316" : "rgba(255,255,255,0.1)",
+      focusedField === name ? "#2F80FF" : "rgba(255,255,255,0.1)",
   });
 
   const scrollToTop = () => {
@@ -222,7 +222,7 @@ export default function ContactSection({ id = "contact" }: ContactSectionProps) 
         className="absolute inset-0 pointer-events-none"
         style={{
           backgroundImage:
-            "radial-gradient(ellipse 60% 50% at 50% 60%, rgba(249,115,22,0.05), transparent)",
+            "radial-gradient(ellipse 60% 50% at 50% 60%, rgba(47,128,255,0.05), transparent)",
         }}
       />
 
@@ -239,7 +239,7 @@ export default function ContactSection({ id = "contact" }: ContactSectionProps) 
           <div className="flex items-center space-x-2">
             <span
               style={{
-                color: "#f97316",
+                color: "#2F80FF",
                 fontFamily: "'Space Grotesk', sans-serif",
                 fontWeight: 700,
               }}
@@ -271,7 +271,7 @@ export default function ContactSection({ id = "contact" }: ContactSectionProps) 
             }}
           >
             {"Let's build something "}
-            <span style={{ color: "#f97316" }}>amazing together</span>
+            <span style={{ color: "#4F9EFF" }}>amazing together</span>
           </h2>
 
           <p
@@ -332,11 +332,11 @@ export default function ContactSection({ id = "contact" }: ContactSectionProps) 
                       alignItems: "center",
                       gap: "1rem",
                       backgroundColor: "#0a0a0a",
-                      border: `1px solid ${isHovered ? "rgba(249,115,22,0.45)" : "rgba(255,255,255,0.1)"}`,
+                      border: `1px solid ${isHovered ? "rgba(47,128,255,0.45)" : "rgba(255,255,255,0.1)"}`,
                       borderRadius: "0.75rem",
                       padding: "1rem",
                       boxShadow: isHovered
-                        ? "0 4px 20px rgba(249,115,22,0.1)"
+                        ? "0 4px 20px rgba(47,128,255,0.1)"
                         : "none",
                       transition: "border-color 0.25s, box-shadow 0.25s",
                       cursor: "default",
@@ -348,8 +348,8 @@ export default function ContactSection({ id = "contact" }: ContactSectionProps) 
                         width: "2.5rem",
                         height: "2.5rem",
                         borderRadius: "50%",
-                        backgroundColor: "rgba(249,115,22,0.1)",
-                        border: "1px solid rgba(249,115,22,0.2)",
+                        backgroundColor: "rgba(47,128,255,0.1)",
+                        border: "1px solid rgba(47,128,255,0.2)",
                         display: "flex",
                         alignItems: "center",
                         justifyContent: "center",
@@ -429,8 +429,8 @@ export default function ContactSection({ id = "contact" }: ContactSectionProps) 
                         height: "2.75rem",
                         borderRadius: "0.625rem",
                         backgroundColor: "#0a0a0a",
-                        border: `1px solid ${isHovered ? "rgba(249,115,22,0.4)" : "rgba(255,255,255,0.08)"}`,
-                        color: isHovered ? "#f97316" : "#71717a",
+                        border: `1px solid ${isHovered ? "rgba(47,128,255,0.4)" : "rgba(255,255,255,0.08)"}`,
+                        color: isHovered ? "#2F80FF" : "#71717a",
                         transition: "border-color 0.2s, color 0.2s",
                         textDecoration: "none",
                       }}
@@ -671,7 +671,7 @@ export default function ContactSection({ id = "contact" }: ContactSectionProps) 
                         padding: "0.875rem 1.5rem",
                         borderRadius: "0.75rem",
                         border: "none",
-                        backgroundColor: sending ? "#7c3404" : "#f97316",
+                        backgroundColor: sending ? "#1d4ed8" : "#2F80FF",
                         color: "#ffffff",
                         fontFamily: "'Space Grotesk', sans-serif",
                         fontWeight: 700,
@@ -748,7 +748,7 @@ export default function ContactSection({ id = "contact" }: ContactSectionProps) 
                 background: "none",
                 border: "none",
                 cursor: "pointer",
-                color: "#f97316",
+                color: "#2F80FF",
                 fontFamily: "'Inter', sans-serif",
                 fontSize: "0.8rem",
                 fontWeight: 600,

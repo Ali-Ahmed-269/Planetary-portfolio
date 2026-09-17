@@ -92,9 +92,9 @@ const TIMELINE: TimelineItem[] = [
     tag: "Milestone",
     tagEmoji: "🏆",
     tagColor: {
-      text: "#f97316",
-      bg: "rgba(249,115,22,0.08)",
-      border: "rgba(249,115,22,0.2)",
+      text: "#2F80FF",
+      bg: "rgba(47,128,255,0.08)",
+      border: "rgba(47,128,255,0.2)",
     },
   },
   {
@@ -105,9 +105,9 @@ const TIMELINE: TimelineItem[] = [
     tag: "Current",
     tagEmoji: "🚀",
     tagColor: {
-      text: "#fb923c",
-      bg: "rgba(251,146,60,0.08)",
-      border: "rgba(251,146,60,0.2)",
+      text: "#4F9EFF",
+      bg: "rgba(79,158,255,0.08)",
+      border: "rgba(79,158,255,0.2)",
     },
   },
 ];
@@ -118,15 +118,15 @@ function PulseDot() {
     <div className="relative flex items-center justify-center w-4 h-4">
       {/* Pulse ring */}
       <motion.span
-        className="absolute rounded-full border border-orange-400"
+        className="absolute rounded-full border border-blue-400"
         style={{ width: "100%", height: "100%" }}
         animate={{ scale: [1, 2.2], opacity: [0.5, 0] }}
         transition={{ duration: 1.6, repeat: Infinity, ease: "easeOut" }}
       />
       {/* Core dot */}
       <span
-        className="relative w-4 h-4 rounded-full bg-orange-500 border-2 border-orange-300 z-10 flex-shrink-0"
-        style={{ boxShadow: "0 0 10px rgba(249,115,22,0.6)" }}
+        className="relative w-4 h-4 rounded-full bg-blue-500 border-2 border-blue-300 z-10 flex-shrink-0"
+        style={{ boxShadow: "0 0 10px rgba(47,128,255,0.6)" }}
       />
     </div>
   );
@@ -160,8 +160,8 @@ function TimelineCard({ item, side, index }: TimelineCardProps) {
             viewport={{ once: true, margin: "-100px" }}
             custom={index}
             whileHover={{
-              borderColor: "rgba(249,115,22,0.45)",
-              boxShadow: "0 8px 32px rgba(249,115,22,0.12)",
+              borderColor: "rgba(47,128,255,0.45)",
+              boxShadow: "0 8px 32px rgba(47,128,255,0.12)",
             }}
             transition={{ duration: 0.3 }}
             style={{
@@ -200,8 +200,8 @@ function TimelineCard({ item, side, index }: TimelineCardProps) {
             viewport={{ once: true, margin: "-100px" }}
             custom={index}
             whileHover={{
-              borderColor: "rgba(249,115,22,0.45)",
-              boxShadow: "0 8px 32px rgba(249,115,22,0.12)",
+              borderColor: "rgba(47,128,255,0.45)",
+              boxShadow: "0 8px 32px rgba(47,128,255,0.12)",
             }}
             transition={{ duration: 0.3 }}
             style={{
@@ -235,9 +235,9 @@ function CardContent({ item }: { item: TimelineItem }) {
           fontSize: "0.8rem",
           fontWeight: 600,
           fontFamily: "'Space Grotesk', sans-serif",
-          color: "#fb923c",
-          backgroundColor: "rgba(249,115,22,0.15)",
-          border: "1px solid rgba(249,115,22,0.3)",
+          color: "#4F9EFF",
+          backgroundColor: "rgba(47,128,255,0.15)",
+          border: "1px solid rgba(47,128,255,0.3)",
           letterSpacing: "0.03em",
         }}
       >
@@ -314,7 +314,7 @@ export default function JourneySection({ id = "journey" }: JourneySectionProps) 
         className="absolute inset-0 pointer-events-none"
         style={{
           backgroundImage:
-            "radial-gradient(ellipse 50% 60% at 50% 40%, rgba(249,115,22,0.04), transparent)",
+            "radial-gradient(ellipse 50% 60% at 50% 40%, rgba(47,128,255,0.04), transparent)",
         }}
       />
 
@@ -331,7 +331,7 @@ export default function JourneySection({ id = "journey" }: JourneySectionProps) 
           <div className="flex items-center space-x-2">
             <span
               style={{
-                color: "#f97316",
+                color: "#2F80FF",
                 fontFamily: "'Space Grotesk', sans-serif",
                 fontWeight: 700,
               }}
@@ -363,7 +363,7 @@ export default function JourneySection({ id = "journey" }: JourneySectionProps) 
             }}
           >
             My path so{" "}
-            <span style={{ color: "#f97316" }}>far</span>
+            <span style={{ color: "#4F9EFF" }}>far</span>
           </h2>
 
           <p
@@ -389,7 +389,7 @@ export default function JourneySection({ id = "journey" }: JourneySectionProps) 
               transform: "translateX(-50%)",
               width: "1px",
               background:
-                "linear-gradient(to bottom, transparent 0%, #f97316 15%, #f97316 85%, transparent 100%)",
+                "linear-gradient(to bottom, transparent 0%, #2F80FF 15%, #2F80FF 85%, transparent 100%)",
               opacity: 0.35,
             }}
           />

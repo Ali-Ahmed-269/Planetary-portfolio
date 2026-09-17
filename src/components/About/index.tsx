@@ -275,7 +275,7 @@ function AnimatedCodeEditor() {
           inset: "-1px",
           borderRadius: "1rem",
           background:
-            "radial-gradient(ellipse 60% 40% at 50% 50%, rgba(249,115,22,0.12), transparent)",
+            "radial-gradient(ellipse 60% 40% at 50% 50%, rgba(47,128,255,0.12), transparent)",
           pointerEvents: "none",
           zIndex: 0,
         }}
@@ -383,7 +383,7 @@ function AnimatedCodeEditor() {
                             display: "inline-block",
                             width: "2px",
                             height: "1.1em",
-                            backgroundColor: "#f97316",
+                            backgroundColor: "#2F80FF",
                             marginLeft: "1px",
                             verticalAlign: "text-bottom",
                           }}
@@ -405,7 +405,7 @@ function AnimatedCodeEditor() {
                   display: "inline-block",
                   width: "2px",
                   height: "1.1em",
-                  backgroundColor: "#f97316",
+                  backgroundColor: "#2F80FF",
                   marginLeft: "1px",
                   verticalAlign: "text-bottom",
                 }}
@@ -439,8 +439,8 @@ function AnimatedCodeEditor() {
                   display: "inline-block",
                   width: 14,
                   height: 14,
-                  border: "2px solid rgba(249,115,22,0.2)",
-                  borderTopColor: "#f97316",
+                  border: "2px solid rgba(47,128,255,0.2)",
+                  borderTopColor: "#2F80FF",
                   borderRadius: "50%",
                   flexShrink: 0,
                 }}
@@ -459,7 +459,7 @@ function AnimatedCodeEditor() {
                   style={{
                     height: "100%",
                     borderRadius: 2,
-                    background: "linear-gradient(90deg, #f97316, #fb923c)",
+                    background: "linear-gradient(90deg, #2F80FF, #4F9EFF)",
                     width: `${compileProgress * 100}%`,
                   }}
                 />
@@ -559,7 +559,7 @@ export default function AboutSection() {
         className="absolute inset-0 pointer-events-none"
         style={{
           backgroundImage:
-            "radial-gradient(ellipse 80% 50% at 50% -20%, rgba(249,115,22,0.06), transparent)",
+            "radial-gradient(ellipse 80% 50% at 50% -20%, rgba(47,128,255,0.06), transparent)",
         }}
       />
 
@@ -575,7 +575,7 @@ export default function AboutSection() {
         >
           {/* Section label */}
           <motion.div variants={leftItemVariants} className="flex items-center space-x-2">
-            <span style={{ color: "#f97316", fontFamily: "'Space Grotesk', sans-serif", fontWeight: 700 }}>
+            <span style={{ color: "#2F80FF", fontFamily: "'Space Grotesk', sans-serif", fontWeight: 700 }}>
               /
             </span>
             <span
@@ -606,7 +606,7 @@ export default function AboutSection() {
             >
               Frontend Developer
               <br />
-              <span style={{ color: "#f97316" }}>&amp; CS Student</span>
+              <span style={{ color: "#4F9EFF" }}>&amp; CS Student</span>
             </h2>
           </motion.div>
 
@@ -635,9 +635,9 @@ export default function AboutSection() {
               }}
             >
               I specialize in{" "}
-              <span style={{ color: "#f97316", fontWeight: 500 }}>React, Next.js</span> and modern
+              <span style={{ color: "#2F80FF", fontWeight: 500 }}>React, Next.js</span> and modern
               frontend technologies. Currently exploring{" "}
-              <span style={{ color: "#f97316", fontWeight: 500 }}>3D web experiences</span> with
+              <span style={{ color: "#4F9EFF", fontWeight: 500 }}>3D web experiences</span> with
               Three.js and building full-stack applications with Supabase.
             </p>
           </motion.div>
@@ -658,8 +658,8 @@ export default function AboutSection() {
                 gap: "0.5rem",
                 padding: "0.75rem 1.75rem",
                 borderRadius: "9999px",
-                border: `1.5px solid ${arrowHovered ? "#f97316" : "rgba(255,255,255,0.2)"}`,
-                color: arrowHovered ? "#f97316" : "#ffffff",
+                border: `1.5px solid ${arrowHovered ? "#2F80FF" : "rgba(255,255,255,0.2)"}`,
+                color: arrowHovered ? "#2F80FF" : "#ffffff",
                 fontFamily: "'Inter', sans-serif",
                 fontSize: "0.875rem",
                 fontWeight: 500,
@@ -696,7 +696,7 @@ export default function AboutSection() {
           <div>
             {/* Label */}
             <div className="flex items-center space-x-2 mb-4">
-              <span style={{ color: "#f97316", fontFamily: "'Space Grotesk', sans-serif", fontWeight: 700 }}>
+              <span style={{ color: "#2F80FF", fontFamily: "'Space Grotesk', sans-serif", fontWeight: 700 }}>
                 /
               </span>
               <span
@@ -742,9 +742,9 @@ export default function AboutSection() {
                       padding: "0.75rem 0.5rem",
                       borderRadius: "0.75rem",
                       backgroundColor: "#111111",
-                      border: `1px solid ${isHovered ? "rgba(249,115,22,0.4)" : "rgba(255,255,255,0.07)"}`,
+                      border: `1px solid ${isHovered ? "rgba(47,128,255,0.4)" : "rgba(255,255,255,0.07)"}`,
                       boxShadow: isHovered
-                        ? "0 4px 20px rgba(249,115,22,0.12)"
+                        ? "0 4px 20px rgba(47,128,255,0.12)"
                         : "none",
                       transition: "border-color 0.2s, box-shadow 0.2s",
                       cursor: "default",

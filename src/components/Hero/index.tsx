@@ -98,7 +98,7 @@ export default function HeroSection() {
         className="absolute inset-0 z-[2] pointer-events-none"
         style={{
           background:
-            "radial-gradient(ellipse at 55% 50%, rgba(249, 115, 22, 0.05) 0%, rgba(10, 10, 10, 0.25) 50%, rgba(10, 10, 10, 0.6) 100%)",
+            "radial-gradient(ellipse at 55% 50%, rgba(47, 128, 255, 0.05) 0%, rgba(10, 10, 10, 0.25) 50%, rgba(10, 10, 10, 0.6) 100%)",
         }}
       />
 
@@ -106,7 +106,7 @@ export default function HeroSection() {
       <SaturnPlanet />
 
       {/* ── 3. MAIN CONTENT (z-[10]) ── */}
-      <div className="relative z-[10] flex flex-col justify-center min-h-screen px-6 sm:px-12 py-20 max-w-full lg:max-w-[55%]">
+      <div className="relative z-[10] flex flex-col pt-8 sm:pt-10 md:pt-12 pb-16 sm:pb-20 px-6 sm:px-12 max-w-full lg:max-w-[55%]">
         <motion.div
           variants={containerVariants}
           initial="hidden"
@@ -115,11 +115,11 @@ export default function HeroSection() {
         >
           {/* Label with blinking cursor */}
           <motion.div variants={leftItemVariants} className="flex items-center space-x-1">
-            <span className="text-orange text-xs md:text-sm font-mono tracking-[0.2em] uppercase font-semibold">
+            <span className="text-[#4F9EFF] text-xs md:text-sm font-mono tracking-[0.2em] uppercase font-semibold">
               Frontend Developer
             </span>
             <span
-              className="text-orange text-xs md:text-sm font-mono transition-opacity duration-100 font-bold"
+              className="text-[#4F9EFF] text-xs md:text-sm font-mono transition-opacity duration-100 font-bold"
               style={{ opacity: cursorVisible ? 1 : 0 }}
             >
               |
@@ -132,7 +132,7 @@ export default function HeroSection() {
             className="text-4xl sm:text-5xl md:text-6xl font-bold tracking-tight text-white font-display leading-[1.15] md:leading-[1.1]"
           >
             I build interfaces <br />
-            that feel <span className="text-orange italic font-serif font-light">alive.</span>
+            that feel <span className="text-[#4F9EFF] italic font-serif font-light">alive.</span>
           </motion.h1>
 
           {/* Subtext description */}
@@ -152,7 +152,7 @@ export default function HeroSection() {
                 e.preventDefault();
                 document.querySelector("#projects")?.scrollIntoView({ behavior: "smooth" });
               }}
-              className="px-8 py-3.5 bg-orange hover:bg-orange-dark text-white rounded-full font-medium text-sm transition-colors duration-200 shadow-lg shadow-orange/20"
+              className="px-8 py-3.5 bg-[#2F80FF] hover:bg-[#1d62d6] text-white rounded-full font-medium text-sm transition-colors duration-200 shadow-lg shadow-[#2F80FF]/20"
               whileHover={{ scale: 1.02 }}
               whileTap={{ scale: 0.98 }}
             >
@@ -207,8 +207,8 @@ export default function HeroSection() {
             className="flex items-center space-x-2 px-2.5 py-1.5 sm:px-3 sm:py-1.5 rounded-lg bg-[#111111]/85 backdrop-blur-md border border-white/10 shadow-lg select-none whitespace-nowrap"
             whileHover={{
               scale: 1.05,
-              borderColor: "rgba(249, 115, 22, 0.4)",
-              boxShadow: "0 4px 20px rgba(249, 115, 22, 0.15)",
+              borderColor: "rgba(47, 128, 255, 0.4)",
+              boxShadow: "0 4px 20px rgba(47, 128, 255, 0.15)",
             }}
           >
             <span className="text-sm">{badge.icon}</span>
@@ -227,13 +227,13 @@ export default function HeroSection() {
         className="absolute bottom-24 right-[120px] max-w-[200px] px-4 py-3.5 rounded-xl bg-[#111111]/90 backdrop-blur-md border border-white/10 shadow-xl z-[10] hidden md:block"
         whileHover={{ y: -3 }}
       >
-        <span className="absolute -top-3 left-3 text-3xl text-orange font-serif select-none">
+        <span className="absolute -top-3 left-3 text-3xl text-[#4F9EFF] font-serif select-none">
           “
         </span>
         <p className="text-[11px] sm:text-xs text-text-muted leading-relaxed italic pt-1 font-sans">
           Code is not just logic, it&apos;s creativity turned into real experiences.
         </p>
-        <div className="text-[9px] sm:text-[10px] font-semibold text-orange tracking-widest uppercase mt-2 font-sans">
+        <div className="text-[9px] sm:text-[10px] font-semibold text-[#4F9EFF] tracking-widest uppercase mt-2 font-sans">
           — Ali Ahmed Khan
         </div>
       </motion.div>

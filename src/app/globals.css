@@ -2,8 +2,14 @@
 
 /* ─── Design Tokens ──────────────────────────────────────────────────────── */
 :root {
-  --orange: #f97316;
-  --orange-dark: #ea580c;
+  --blue: #2F80FF;
+  --blue-light: #4F9EFF;
+  --blue-dark: #1d62d6;
+  --accent: #2F80FF;
+  --accent-light: #4F9EFF;
+  --accent-dark: #1d62d6;
+  --orange: var(--blue);
+  --orange-dark: var(--blue-dark);
   --bg: #0a0a0a;
   --bg-secondary: #111111;
   --text: #ffffff;
@@ -12,8 +18,14 @@
 
 /* ─── Tailwind v4 Theme Extension ────────────────────────────────────────── */
 @theme inline {
-  --color-orange: var(--orange);
-  --color-orange-dark: var(--orange-dark);
+  --color-blue: var(--blue);
+  --color-blue-light: var(--blue-light);
+  --color-blue-dark: var(--blue-dark);
+  --color-accent: var(--accent);
+  --color-accent-light: var(--accent-light);
+  --color-accent-dark: var(--accent-dark);
+  --color-orange: var(--blue);
+  --color-orange-dark: var(--blue-dark);
   --color-bg-primary: var(--bg);
   --color-bg-secondary: var(--bg-secondary);
   --color-text-muted: var(--text-muted);
@@ -42,11 +54,11 @@ body {
 
 /* ─── Selection Color ────────────────────────────────────────────────────── */
 ::selection {
-  background-color: var(--orange);
+  background-color: var(--blue);
   color: #ffffff;
 }
 
 ::-moz-selection {
-  background-color: var(--orange);
+  background-color: var(--blue);
   color: #ffffff;
 }

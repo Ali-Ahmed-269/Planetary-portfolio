@@ -28,8 +28,8 @@ export default function TopNav() {
   const { scrollY } = useScroll();
 
   /* Scroll-driven transforms */
-  const navHeight    = useTransform(scrollY, [0, 100], [60, 50]);
-  const bgOpacity    = useTransform(scrollY, [0, 80],  [0.8, 0.97]);
+  const navHeight    = useTransform(scrollY, [0, 100], [74, 62]);
+  const bgOpacity    = useTransform(scrollY, [0, 80],  [0.85, 0.97]);
   const borderOpacity = useTransform(scrollY, [0, 100], [0.05, 0.12]);
 
   /* Track active section via IntersectionObserver */
@@ -133,9 +133,9 @@ export default function TopNav() {
             display: "flex",
             alignItems: "center",
             justifyContent: "space-between",
-            paddingLeft: "1rem",
-            paddingRight: "1rem",
-            gap: "0.75rem",
+            paddingLeft: "1.25rem",
+            paddingRight: "1.25rem",
+            gap: "1rem",
           }}
         >
           {/* ── Logo ── */}
@@ -143,18 +143,18 @@ export default function TopNav() {
             style={{
               display: "flex",
               alignItems: "center",
-              gap: "0.5rem",
+              gap: "0.65rem",
               flexShrink: 0,
             }}
           >
             <button
               type="button"
               onClick={() => setPhotoOpen(true)}
-              className="cursor-pointer ring-1 ring-transparent hover:ring-orange-500 transition-all rounded-full overflow-hidden shrink-0 flex items-center justify-center p-0"
+              className="cursor-pointer ring-1 ring-transparent hover:ring-blue-500 transition-all rounded-full overflow-hidden shrink-0 flex items-center justify-center p-0"
               style={{
-                width: "2rem",
-                height: "2rem",
-                border: "1.5px solid #f97316",
+                width: "2.5rem",
+                height: "2.5rem",
+                border: "1.5px solid #2F80FF",
                 flexShrink: 0,
                 background: "transparent",
               }}
@@ -163,8 +163,8 @@ export default function TopNav() {
               <Image
                 src="/hero.jpg"
                 alt="Ali Khan"
-                width={32}
-                height={32}
+                width={40}
+                height={40}
                 className="w-full h-full object-cover rounded-full"
               />
             </button>
@@ -183,14 +183,14 @@ export default function TopNav() {
                 style={{
                   fontFamily: "'Space Grotesk', sans-serif",
                   fontWeight: 700,
-                  fontSize: "1rem",
+                  fontSize: "1.15rem",
                   color: "#ffffff",
                   lineHeight: 1,
                   whiteSpace: "nowrap",
                 }}
               >
                 Ali{" "}
-                <span style={{ color: "#f97316" }}>Khan</span>
+                <span style={{ color: "#4F9EFF" }}>Khan</span>
               </span>
             </motion.a>
           </div>
@@ -201,8 +201,8 @@ export default function TopNav() {
               style={{
                 display: "flex",
                 alignItems: "center",
-                gap: "0.125rem",
-                padding: "0.375rem 0.5rem",
+                gap: "0.35rem",
+                padding: "0.45rem 0.65rem",
                 borderRadius: "9999px",
                 backgroundColor: "rgba(255,255,255,0.04)",
                 border: "1px solid rgba(255,255,255,0.07)",
@@ -222,8 +222,8 @@ export default function TopNav() {
                     onMouseLeave={() => setHovered(null)}
                     style={{
                       position: "relative",
-                      padding: "0.25rem 0.75rem",
-                      fontSize: "0.8125rem",
+                      padding: "0.35rem 0.95rem",
+                      fontSize: "0.9375rem",
                       borderRadius: "9999px",
                       color: isActive || isHov ? "#ffffff" : "#a1a1aa",
                       fontWeight: isActive ? 500 : 400,
@@ -235,18 +235,18 @@ export default function TopNav() {
                   >
                     {link.label}
 
-                    {/* Animated orange underline */}
+                    {/* Animated blue underline */}
                     {isActive && (
                       <motion.span
                         layoutId="active-underline"
                         style={{
                           position: "absolute",
-                          bottom: "2px",
-                          left: "0.75rem",
-                          right: "0.75rem",
+                          bottom: "3px",
+                          left: "0.95rem",
+                          right: "0.95rem",
                           height: "2px",
                           borderRadius: "9999px",
-                          backgroundColor: "#f97316",
+                          backgroundColor: "#2F80FF",
                         }}
                         transition={{ type: "spring", bounce: 0.25, duration: 0.4 }}
                       />
@@ -258,24 +258,24 @@ export default function TopNav() {
           </nav>
 
           {/* ── Right section: CTA button & Mobile Hamburger ── */}
-          <div className="flex items-center gap-2 shrink-0">
+          <div className="flex items-center gap-2.5 shrink-0">
             <motion.a
               href="#contact"
               onClick={(e) => handleNavClick(e, "#contact")}
               style={{
                 flexShrink: 0,
-                padding: "0.35rem 0.9rem",
+                padding: "0.45rem 1.15rem",
                 borderRadius: "9999px",
-                border: "1.5px solid #f97316",
-                color: "#f97316",
+                border: "1.5px solid #2F80FF",
+                color: "#2F80FF",
                 fontFamily: "'Inter', sans-serif",
-                fontSize: "0.8125rem",
-                fontWeight: 500,
+                fontSize: "0.9rem",
+                fontWeight: 600,
                 textDecoration: "none",
                 whiteSpace: "nowrap",
               }}
               whileHover={{
-                backgroundColor: "#f97316",
+                backgroundColor: "#2F80FF",
                 color: "#ffffff",
                 scale: 1.03,
               }}
@@ -289,10 +289,10 @@ export default function TopNav() {
             <button
               type="button"
               onClick={() => setMobileMenuOpen((prev) => !prev)}
-              className="flex md:hidden items-center justify-center w-9 h-9 rounded-lg border border-white/10 bg-white/5 text-zinc-300 hover:text-white hover:bg-white/10 transition-colors cursor-pointer shrink-0"
+              className="flex md:hidden items-center justify-center w-10 h-10 rounded-lg border border-white/10 bg-white/5 text-zinc-300 hover:text-white hover:bg-white/10 transition-colors cursor-pointer shrink-0"
               aria-label={mobileMenuOpen ? "Close menu" : "Open menu"}
             >
-              {mobileMenuOpen ? <X size={20} /> : <Menu size={20} />}
+              {mobileMenuOpen ? <X size={22} /> : <Menu size={22} />}
             </button>
           </div>
         </div>
@@ -308,7 +308,7 @@ export default function TopNav() {
               animate={{ opacity: 1 }}
               exit={{ opacity: 0 }}
               transition={{ duration: 0.2 }}
-              className="fixed inset-0 top-[60px] left-0 md:left-[60px] bg-black/60 backdrop-blur-xs z-40 md:hidden"
+              className="fixed inset-0 top-[74px] left-0 md:left-[60px] bg-black/60 backdrop-blur-xs z-40 md:hidden"
               onClick={() => setMobileMenuOpen(false)}
             />
 
@@ -318,7 +318,7 @@ export default function TopNav() {
               animate={{ opacity: 1, y: 0 }}
               exit={{ opacity: 0, y: -10 }}
               transition={{ duration: 0.2, ease: "easeOut" }}
-              className="fixed top-[60px] left-0 md:left-[60px] right-0 z-40 md:hidden bg-[#0a0a0a]/95 border-b border-white/10 shadow-2xl backdrop-blur-xl px-4 py-3 flex flex-col gap-1"
+              className="fixed top-[74px] left-0 md:left-[60px] right-0 z-40 md:hidden bg-[#0a0a0a]/95 border-b border-white/10 shadow-2xl backdrop-blur-xl px-4 py-3 flex flex-col gap-1"
             >
               {NAV_LINKS.map((link) => {
                 const id = link.href.replace("#", "");
@@ -331,7 +331,7 @@ export default function TopNav() {
                     onClick={(e) => handleNavClick(e, link.href)}
                     className={`min-h-[44px] flex items-center px-4 rounded-xl text-sm font-medium transition-colors ${
                       isActive
-                        ? "text-orange-500 bg-orange-500/10 border border-orange-500/20"
+                        ? "text-blue-500 bg-blue-500/10 border border-blue-500/20"
                         : "text-zinc-300 hover:text-white hover:bg-white/5"
                     }`}
                   >
@@ -373,7 +373,7 @@ export default function TopNav() {
               <button
                 type="button"
                 onClick={() => setPhotoOpen(false)}
-                className="absolute -top-3 -right-3 w-8 h-8 rounded-full bg-orange-500 text-white text-sm font-bold flex items-center justify-center hover:bg-orange-600 cursor-pointer shadow-lg transition-colors"
+                className="absolute -top-3 -right-3 w-8 h-8 rounded-full bg-blue-500 text-white text-sm font-bold flex items-center justify-center hover:bg-blue-600 cursor-pointer shadow-lg transition-colors"
                 aria-label="Close"
               >
                 ✕

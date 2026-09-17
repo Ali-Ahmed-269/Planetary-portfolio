@@ -32,8 +32,8 @@ export default function SaturnPlanet() {
     container.appendChild(renderer.domElement);
 
     // ── 2. Lighting ──
-    // Direct sunlight from upper-left
-    const dirLight = new THREE.DirectionalLight(0xfff5ea, 3.4);
+    // Direct sunlight from upper-left with neutral/cool white tone
+    const dirLight = new THREE.DirectionalLight(0xf0f6ff, 3.4);
     dirLight.position.set(-7, 6, 6);
     dirLight.castShadow = true;
     dirLight.shadow.mapSize.width = 2048;
@@ -47,12 +47,12 @@ export default function SaturnPlanet() {
     dirLight.shadow.bias = -0.0003;
     scene.add(dirLight);
 
-    // Soft warm ambient cosmic light
-    const ambientLight = new THREE.AmbientLight(0x2a2438, 0.65);
+    // Soft cool ambient cosmic light
+    const ambientLight = new THREE.AmbientLight(0x1e2638, 0.75);
     scene.add(ambientLight);
 
     // Subtle fill light from lower right
-    const fillLight = new THREE.DirectionalLight(0x403020, 0.4);
+    const fillLight = new THREE.DirectionalLight(0x203040, 0.4);
     fillLight.position.set(7, -5, -4);
     scene.add(fillLight);
 
@@ -69,21 +69,21 @@ export default function SaturnPlanet() {
     bodyCanvas.height = 512;
     const bCtx = bodyCanvas.getContext("2d")!;
 
-    bCtx.fillStyle = "#d8c4a4";
+    bCtx.fillStyle = "#c8d2df";
     bCtx.fillRect(0, 0, 1024, 512);
 
     const bands = [
       { y: 0.0, h: 0.12, color: "#4c5866" }, // North polar cap
       { y: 0.12, h: 0.08, color: "#7a8a99" },
-      { y: 0.20, h: 0.07, color: "#cfc0a5" },
-      { y: 0.27, h: 0.08, color: "#eadecb" },
-      { y: 0.35, h: 0.07, color: "#cfa26e" },
-      { y: 0.42, h: 0.10, color: "#f7e8cf" }, // Equatorial zone
-      { y: 0.52, h: 0.10, color: "#d69f62" }, // Amber belt
-      { y: 0.62, h: 0.08, color: "#b59875" },
-      { y: 0.70, h: 0.08, color: "#786550" },
-      { y: 0.78, h: 0.10, color: "#4a3c30" },
-      { y: 0.88, h: 0.12, color: "#2d241c" }, // South pole
+      { y: 0.20, h: 0.07, color: "#9ca9b8" },
+      { y: 0.27, h: 0.08, color: "#cbd5e1" },
+      { y: 0.35, h: 0.07, color: "#8ca0b8" },
+      { y: 0.42, h: 0.10, color: "#e2e8f0" }, // Equatorial zone
+      { y: 0.52, h: 0.10, color: "#94a3b8" }, // Cool gray-blue belt
+      { y: 0.62, h: 0.08, color: "#64748b" },
+      { y: 0.70, h: 0.08, color: "#475569" },
+      { y: 0.78, h: 0.10, color: "#334155" },
+      { y: 0.88, h: 0.12, color: "#1e293b" }, // South pole
     ];
 
     bands.forEach((b) => {
@@ -110,17 +110,17 @@ export default function SaturnPlanet() {
 
     const rGrad = rCtx.createLinearGradient(0, 0, 0, 1024);
     rGrad.addColorStop(0.0, "rgba(0, 0, 0, 0)");
-    rGrad.addColorStop(0.05, "rgba(180, 160, 130, 0.15)");
-    rGrad.addColorStop(0.20, "rgba(205, 185, 150, 0.4)");
-    rGrad.addColorStop(0.25, "rgba(235, 215, 180, 0.85)");
-    rGrad.addColorStop(0.42, "rgba(255, 248, 230, 0.95)");
-    rGrad.addColorStop(0.55, "rgba(215, 195, 160, 0.8)");
+    rGrad.addColorStop(0.05, "rgba(160, 175, 195, 0.15)");
+    rGrad.addColorStop(0.20, "rgba(180, 195, 215, 0.4)");
+    rGrad.addColorStop(0.25, "rgba(210, 225, 245, 0.85)");
+    rGrad.addColorStop(0.42, "rgba(240, 248, 255, 0.95)");
+    rGrad.addColorStop(0.55, "rgba(190, 205, 225, 0.8)");
     rGrad.addColorStop(0.58, "rgba(8, 8, 12, 0.04)");   // Cassini gap
     rGrad.addColorStop(0.63, "rgba(8, 8, 12, 0.04)");
-    rGrad.addColorStop(0.65, "rgba(200, 180, 145, 0.75)");
-    rGrad.addColorStop(0.84, "rgba(170, 150, 120, 0.55)");
+    rGrad.addColorStop(0.65, "rgba(175, 190, 210, 0.75)");
+    rGrad.addColorStop(0.84, "rgba(150, 165, 185, 0.55)");
     rGrad.addColorStop(0.90, "rgba(10, 10, 15, 0.08)");
-    rGrad.addColorStop(0.95, "rgba(220, 200, 170, 0.3)");
+    rGrad.addColorStop(0.95, "rgba(200, 215, 235, 0.3)");
     rGrad.addColorStop(1.0, "rgba(0, 0, 0, 0)"); // Smooth transparent edge
 
     rCtx.fillStyle = rGrad;
@@ -143,9 +143,9 @@ export default function SaturnPlanet() {
     // Atmosphere Rim Glow Mesh
     const atmosGeo = new THREE.SphereGeometry(1.53, 32, 32);
     const atmosMat = new THREE.MeshBasicMaterial({
-      color: 0xf97316,
+      color: 0x2f80ff,
       transparent: true,
-      opacity: 0.12,
+      opacity: 0.16,
       side: THREE.BackSide,
     });
     const atmosMesh = new THREE.Mesh(atmosGeo, atmosMat);
@@ -185,7 +185,7 @@ export default function SaturnPlanet() {
     // Titan
     const titanGeo = new THREE.SphereGeometry(0.065, 16, 16);
     const titanMat = new THREE.MeshStandardMaterial({
-      color: 0xfceabb,
+      color: 0xdbeafe,
       roughness: 0.5,
     });
     const titanMesh = new THREE.Mesh(titanGeo, titanMat);
@@ -307,7 +307,7 @@ export default function SaturnPlanet() {
         className="absolute inset-4 rounded-full blur-3xl opacity-70"
         style={{
           background:
-            "radial-gradient(circle, rgba(249,115,22,0.2) 0%, rgba(245,158,11,0.08) 45%, transparent 75%)",
+            "radial-gradient(circle, rgba(47,128,255,0.2) 0%, rgba(79,158,255,0.08) 45%, transparent 75%)",
         }}
       />
       {/* Three.js Canvas Container with radial blend mask */}

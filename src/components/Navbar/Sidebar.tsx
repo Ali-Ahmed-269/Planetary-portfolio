@@ -182,8 +182,8 @@ export default function Sidebar() {
         <div
           className="w-8 h-8 flex items-center justify-center text-sm font-bold"
           style={{
-            border: "1.5px solid #f97316",
-            color: "#f97316",
+            border: "1.5px solid #2F80FF",
+            color: "#2F80FF",
             borderRadius: "6px",
             fontFamily: "'Space Grotesk', sans-serif",
           }}
@@ -205,7 +205,7 @@ export default function Sidebar() {
                 animate={{ opacity: isActive ? 1 : 0, scaleY: isActive ? 1 : 0.4 }}
                 transition={{ duration: 0.2 }}
                 className="absolute -left-[3px] w-[3px] h-5 rounded-full"
-                style={{ backgroundColor: "#f97316" }}
+                style={{ backgroundColor: "#2F80FF" }}
               />
 
               <a
@@ -215,13 +215,13 @@ export default function Sidebar() {
                 title={item.label}
                 className="group relative flex items-center justify-center w-10 h-10 rounded-lg transition-colors duration-200"
                 style={{
-                  color: isActive ? "#f97316" : "#a1a1aa",
-                  backgroundColor: isActive ? "rgba(249,115,22,0.08)" : "transparent",
+                  color: isActive ? "#2F80FF" : "#a1a1aa",
+                  backgroundColor: isActive ? "rgba(47,128,255,0.08)" : "transparent",
                 }}
                 onMouseEnter={(e) => {
                   if (!isActive) {
-                    (e.currentTarget as HTMLElement).style.color = "#f97316";
-                    (e.currentTarget as HTMLElement).style.backgroundColor = "rgba(249,115,22,0.06)";
+                    (e.currentTarget as HTMLElement).style.color = "#2F80FF";
+                    (e.currentTarget as HTMLElement).style.backgroundColor = "rgba(47,128,255,0.06)";
                   }
                 }}
                 onMouseLeave={(e) => {
@@ -256,7 +256,7 @@ export default function Sidebar() {
               rel="noopener noreferrer"
               className="flex items-center justify-center w-9 h-9 rounded-lg transition-colors duration-200"
               style={{ color: "#52525b" }}
-              whileHover={{ color: "#f97316", scale: 1.1 }}
+              whileHover={{ color: "#2F80FF", scale: 1.1 }}
               whileTap={{ scale: 0.95 }}
             >
               <Icon size={16} strokeWidth={1.75} />

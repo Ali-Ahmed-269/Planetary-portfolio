@@ -132,9 +132,9 @@ function getTagStyles(color: TagColor) {
       };
     case "orange":
       return {
-        color: "#f97316",
-        backgroundColor: "rgba(249,115,22,0.08)",
-        borderColor: "rgba(249,115,22,0.15)",
+        color: "#2F80FF",
+        backgroundColor: "rgba(47,128,255,0.08)",
+        borderColor: "rgba(47,128,255,0.15)",
       };
     case "purple":
       return {
@@ -172,7 +172,7 @@ export default function ProjectsSection() {
         className="absolute inset-0 pointer-events-none"
         style={{
           backgroundImage:
-            "radial-gradient(ellipse 60% 40% at 70% 80%, rgba(249,115,22,0.04), transparent)",
+            "radial-gradient(ellipse 60% 40% at 70% 80%, rgba(47,128,255,0.04), transparent)",
         }}
       />
 
@@ -188,13 +188,13 @@ export default function ProjectsSection() {
         >
           <div className="flex flex-col space-y-3">
             <div className="flex items-center space-x-2">
-              <span className="text-orange font-bold font-display">/</span>
+              <span className="text-[#2F80FF] font-bold font-display">/</span>
               <span className="text-text-muted text-sm font-mono tracking-widest uppercase font-semibold">
                 Selected Work
               </span>
             </div>
             <h2 className="text-4xl md:text-5xl font-bold font-display text-white tracking-tight leading-none">
-              Projects that <span className="text-orange">speak for themselves</span>
+              Projects that <span className="text-[#4F9EFF]">speak for themselves</span>
             </h2>
           </div>
 
@@ -202,7 +202,7 @@ export default function ProjectsSection() {
             href="#"
             onMouseEnter={() => setHeaderLinkHovered(true)}
             onMouseLeave={() => setHeaderLinkHovered(false)}
-            className="text-orange text-sm font-semibold tracking-wide font-sans flex items-center gap-1 self-start md:self-auto transition-colors duration-200"
+            className="text-[#2F80FF] text-sm font-semibold tracking-wide font-sans flex items-center gap-1 self-start md:self-auto transition-colors duration-200"
             style={{ textDecoration: "none" }}
             whileHover={{ scale: 1.02 }}
           >
@@ -237,8 +237,8 @@ export default function ProjectsSection() {
                 onMouseLeave={() => setHoveredCard(null)}
                 whileHover={{
                   y: -6,
-                  borderColor: "rgba(249, 115, 22, 0.4)",
-                  boxShadow: "0 12px 30px rgba(249, 115, 22, 0.12)",
+                  borderColor: "rgba(47, 128, 255, 0.4)",
+                  boxShadow: "0 12px 30px rgba(47, 128, 255, 0.12)",
                 }}
                 transition={{ duration: 0.35, ease: EASE_SPRING }}
                 className="group relative flex flex-col bg-[#111111] border border-white/10 rounded-2xl overflow-hidden"
@@ -263,7 +263,7 @@ export default function ProjectsSection() {
                 {/* Bottom Content Area */}
                 <div className="flex-1 flex flex-col justify-between p-6 space-y-5">
                   <div className="space-y-3">
-                    <h3 className="text-xl font-bold text-white font-display group-hover:text-orange transition-colors duration-300">
+                    <h3 className="text-xl font-bold text-white font-display group-hover:text-[#2F80FF] transition-colors duration-300">
                       {project.name}
                     </h3>
                     
@@ -288,7 +288,7 @@ export default function ProjectsSection() {
                         href={project.github}
                         target="_blank"
                         rel="noopener noreferrer"
-                        className="relative z-20 inline-flex items-center gap-2 text-zinc-500 hover:text-orange transition-colors duration-200 group/gh"
+                        className="relative z-20 inline-flex items-center gap-2 text-zinc-500 hover:text-[#2F80FF] transition-colors duration-200 group/gh"
                         style={{ textDecoration: "none" }}
                       >
                         <GitHubIcon className="w-5 h-5 transition-colors duration-200" />

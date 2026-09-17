@@ -82,7 +82,7 @@ export default function SkillsSection({ id = "skills" }: SkillsSectionProps) {
         className="absolute inset-0 pointer-events-none"
         style={{
           backgroundImage:
-            "radial-gradient(ellipse 60% 40% at 50% 50%, rgba(249, 115, 22, 0.04), transparent)",
+            "radial-gradient(ellipse 60% 40% at 50% 50%, rgba(47, 128, 255, 0.04), transparent)",
         }}
       />
 
@@ -97,14 +97,14 @@ export default function SkillsSection({ id = "skills" }: SkillsSectionProps) {
           className="flex flex-col items-center text-center space-y-4 pb-8 border-b border-white/5"
         >
           <div className="flex items-center space-x-2">
-            <span className="text-orange font-bold font-display">/</span>
+            <span className="text-[#2F80FF] font-bold font-display">/</span>
             <span className="text-text-muted text-sm font-mono tracking-widest uppercase font-semibold">
               Skills
             </span>
           </div>
 
           <h2 className="text-4xl md:text-5xl font-bold font-display text-white tracking-tight leading-none">
-            What I bring <span className="text-orange">to the table</span>
+            What I bring <span className="text-[#4F9EFF]">to the table</span>
           </h2>
 
           <p className="text-text-muted text-base max-w-lg font-sans">
@@ -128,7 +128,7 @@ export default function SkillsSection({ id = "skills" }: SkillsSectionProps) {
                     <span className="text-white font-medium text-base">
                       {skill.name}
                     </span>
-                    <span className="text-orange font-semibold text-base">
+                    <span className="text-[#2F80FF] font-semibold text-base">
                       {skill.percentage}%
                     </span>
                   </div>
@@ -141,7 +141,7 @@ export default function SkillsSection({ id = "skills" }: SkillsSectionProps) {
                       whileInView={{ width: `${skill.percentage}%` }}
                       viewport={{ once: true }}
                       transition={{ duration: 1.2, ease: "easeOut", delay: index * 0.1 }}
-                      className="h-full rounded-full bg-gradient-to-r from-orange-600 to-orange-400"
+                      className="h-full rounded-full bg-gradient-to-r from-[#1d62d6] to-[#4F9EFF]"
                     />
                   </div>
                 </div>
@@ -167,7 +167,7 @@ export default function SkillsSection({ id = "skills" }: SkillsSectionProps) {
                   key={card.name}
                   variants={cardVariants}
                   whileHover={{ scale: 1.03 }}
-                  className="bg-[#0a0a0a] border border-white/10 rounded-xl p-3 sm:p-4 text-center transition-all duration-300 hover:border-orange hover:shadow-[0_0_20px_rgba(249,115,22,0.15)] cursor-default flex flex-col items-center justify-center space-y-2"
+                  className="bg-[#0a0a0a] border border-white/10 rounded-xl p-3 sm:p-4 text-center transition-all duration-300 hover:border-[#2F80FF] hover:shadow-[0_0_20px_rgba(47,128,255,0.15)] cursor-default flex flex-col items-center justify-center space-y-2"
                 >
                   <span className="text-2xl sm:text-3xl select-none">{card.icon}</span>
                   <span className="text-white font-semibold text-xs sm:text-sm block">
