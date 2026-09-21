@@ -7,12 +7,12 @@ import { Menu, X } from "lucide-react";
 
 /* ─── Data ───────────────────────────────────────────────────────────────── */
 const NAV_LINKS = [
-  { label: "Home",     href: "#home"     },
-  { label: "About",    href: "#about"    },
+  { label: "Home", href: "#home" },
+  { label: "About", href: "#about" },
   { label: "Projects", href: "#projects" },
-  { label: "Skills",   href: "#skills"   },
-  { label: "Journey",  href: "#journey"  },
-  { label: "Contact",  href: "#contact"  },
+  { label: "Skills", href: "#skills" },
+  { label: "Journey", href: "#journey" },
+  { label: "Contact", href: "#contact" },
 ];
 
 /* ─── Component ──────────────────────────────────────────────────────────── */
@@ -28,8 +28,8 @@ export default function TopNav() {
   const { scrollY } = useScroll();
 
   /* Scroll-driven transforms */
-  const navHeight    = useTransform(scrollY, [0, 100], [74, 62]);
-  const bgOpacity    = useTransform(scrollY, [0, 80],  [0.85, 0.97]);
+  const navHeight = useTransform(scrollY, [0, 100], [74, 62]);
+  const bgOpacity = useTransform(scrollY, [0, 80], [0.85, 0.97]);
   const borderOpacity = useTransform(scrollY, [0, 100], [0.05, 0.12]);
 
   /* Track active section via IntersectionObserver */
@@ -211,7 +211,7 @@ export default function TopNav() {
               {NAV_LINKS.map((link) => {
                 const id = link.href.replace("#", "");
                 const isActive = activeSection === id;
-                const isHov    = hovered === id;
+                const isHov = hovered === id;
 
                 return (
                   <a
@@ -329,11 +329,10 @@ export default function TopNav() {
                     key={link.label}
                     href={link.href}
                     onClick={(e) => handleNavClick(e, link.href)}
-                    className={`min-h-[44px] flex items-center px-4 rounded-xl text-sm font-medium transition-colors ${
-                      isActive
-                        ? "text-blue-500 bg-blue-500/10 border border-blue-500/20"
-                        : "text-zinc-300 hover:text-white hover:bg-white/5"
-                    }`}
+                    className={`min-h-[44px] flex items-center px-4 rounded-xl text-sm font-medium transition-colors ${isActive
+                      ? "text-blue-500 bg-blue-500/10 border border-blue-500/20"
+                      : "text-zinc-300 hover:text-white hover:bg-white/5"
+                      }`}
                   >
                     {link.label}
                   </a>

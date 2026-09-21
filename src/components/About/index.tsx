@@ -2,6 +2,17 @@
 
 import { motion, Variants, AnimatePresence } from "framer-motion";
 import { useState, useEffect, useRef, useCallback } from "react";
+import {
+  Zap,
+  Flame,
+  Atom,
+  Code2,
+  Database,
+  Palette,
+  Sparkles,
+  GitBranch,
+  LucideIcon,
+} from "lucide-react";
 
 /* ─── Easing constants ───────────────────────────────────────────────────── */
 const EASE_OUT: [number, number, number, number] = [0.215, 0.61, 0.355, 1];
@@ -36,19 +47,19 @@ const techCardVariants: Variants = {
 /* ─── Tech Stack Data ────────────────────────────────────────────────────── */
 interface TechItem {
   name: string;
-  icon: string;
+  icon: LucideIcon;
   color: string;
 }
 
 const TECH_STACK: TechItem[] = [
-  { name: "Next.js",       icon: "🌐", color: "#ffffff" },
-  { name: "Svelte",        icon: "🔥", color: "#ff6600" },
-  { name: "React",         icon: "⚛️",  color: "#61dafb" },
-  { name: "TypeScript",    icon: "📘", color: "#3178c6" },
-  { name: "Supabase",      icon: "⚡", color: "#3ecf8e" },
-  { name: "Tailwind",      icon: "🎨", color: "#38bdf8" },
-  { name: "Framer Motion", icon: "🎬", color: "#cc66ff" },
-  { name: "Git",           icon: "🔀", color: "#f14e32" },
+  { name: "Next.js",       icon: Zap,        color: "#ffffff" },
+  { name: "Svelte",        icon: Flame,      color: "#ff6600" },
+  { name: "React",         icon: Atom,       color: "#61dafb" },
+  { name: "TypeScript",    icon: Code2,      color: "#3178c6" },
+  { name: "Supabase",      icon: Database,   color: "#3ecf8e" },
+  { name: "Tailwind",      icon: Palette,    color: "#38bdf8" },
+  { name: "Framer Motion", icon: Sparkles,   color: "#cc66ff" },
+  { name: "Git",           icon: GitBranch,  color: "#f14e32" },
 ];
 
 /* ─── Code Editor Lines (visual only — not real executable code) ─────────── */
@@ -254,17 +265,17 @@ function AnimatedCodeEditor() {
     phase === "success"
       ? "#28c840"
       : phase === "compiling"
-      ? "#febc2e"
-      : "#52525b";
+        ? "#febc2e"
+        : "#52525b";
 
   const statusText =
     phase === "compiling"
       ? "Compiling..."
       : phase === "success"
-      ? "✓ Compiled successfully"
-      : phase === "reset"
-      ? "Clearing..."
-      : "portfolio.tsx";
+        ? "✓ Compiled successfully"
+        : phase === "reset"
+          ? "Clearing..."
+          : "portfolio.tsx";
 
   return (
     <div ref={sectionRef} style={{ position: "relative", borderRadius: "1rem" }}>
@@ -726,6 +737,7 @@ export default function AboutSection() {
             >
               {TECH_STACK.map((tech) => {
                 const isHovered = hoveredTech === tech.name;
+                const Icon = tech.icon;
                 return (
                   <motion.div
                     key={tech.name}
@@ -750,7 +762,7 @@ export default function AboutSection() {
                       cursor: "default",
                     }}
                   >
-                    <span style={{ fontSize: "1.25rem" }}>{tech.icon}</span>
+                    <Icon className="w-5 h-5 text-[#2F80FF]" strokeWidth={1.75} />
                     <span
                       style={{
                         color: isHovered ? tech.color : "#71717a",

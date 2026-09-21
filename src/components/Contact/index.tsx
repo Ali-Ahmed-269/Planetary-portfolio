@@ -738,7 +738,7 @@ export default function ContactSection({ id = "contact" }: ContactSectionProps) 
                 textAlign: "center",
               }}
             >
-              © 2024 Ali Ahmed Khan. Crafted with ❤️ and lots of ☕
+              © 2024 Ali Ahmed Khan.
             </p>
 
             <motion.button

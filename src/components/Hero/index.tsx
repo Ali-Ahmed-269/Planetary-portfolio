@@ -2,7 +2,7 @@
 
 import { motion, Variants } from "framer-motion";
 import { useEffect, useState } from "react";
-import { Rocket, Users, Trophy } from "lucide-react";
+import { Rocket, Users, Trophy, Zap, Flame, Code2, Database, Palette, LucideIcon } from "lucide-react";
 import ParticleBackground from "./ParticleBackground";
 import SaturnPlanet from "./SaturnPlanet";
 
@@ -15,7 +15,7 @@ interface StatItem {
 
 interface TechBadge {
   name: string;
-  icon: string;
+  icon: LucideIcon;
 }
 
 /* ─── Mock Data ──────────────────────────────────────────────────────────── */
@@ -26,11 +26,11 @@ const STATS: StatItem[] = [
 ];
 
 const TECH_BADGES: TechBadge[] = [
-  { name: "Next.js", icon: "🌐" },
-  { name: "Svelte", icon: "🔥" },
-  { name: "TypeScript", icon: "📘" },
-  { name: "Supabase", icon: "⚡" },
-  { name: "Tailwind CSS", icon: "🎨" },
+  { name: "Next.js", icon: Zap },
+  { name: "Svelte", icon: Flame },
+  { name: "TypeScript", icon: Code2 },
+  { name: "Supabase", icon: Database },
+  { name: "Tailwind CSS", icon: Palette },
 ];
 
 /* ─── Framer Motion Variants ─────────────────────────────────────────────── */
@@ -104,7 +104,9 @@ export default function HeroSection() {
       />
 
       {/* ── 3. SATURN PLANET ILLUSTRATION (z-[4]) ── */}
-      <SaturnPlanet />
+      <div className="hidden md:block">
+        <SaturnPlanet />
+      </div>
 
       {/* ── 3. MAIN CONTENT (z-[10]) ── */}
       <div className="relative z-[10] flex flex-col pt-8 sm:pt-10 md:pt-12 pb-16 sm:pb-20 px-6 sm:px-12 max-w-full lg:max-w-[55%]">
@@ -179,9 +181,8 @@ export default function HeroSection() {
               return (
                 <div
                   key={stat.label}
-                  className={`flex flex-col space-y-1.5 ${
-                    idx > 0 ? "border-l border-white/5 pl-4 sm:pl-6" : ""
-                  }`}
+                  className={`flex flex-col space-y-1.5 ${idx > 0 ? "border-l border-white/5 pl-4 sm:pl-6" : ""
+                    }`}
                 >
                   <div className="flex items-center space-x-2">
                     <Icon className="w-5 h-5 sm:w-6 sm:h-6 text-[#2F80FF] shrink-0" strokeWidth={2} />
@@ -201,26 +202,29 @@ export default function HeroSection() {
 
       {/* ── 5. TECH BADGES (z-[10]) ── */}
       <div className="absolute right-4 top-1/2 -translate-y-1/2 z-[10] hidden md:flex flex-col gap-3">
-        {TECH_BADGES.map((badge, idx) => (
-          <motion.div
-            key={badge.name}
-            custom={idx}
-            variants={badgeVariants}
-            initial="hidden"
-            animate="visible"
-            className="flex items-center space-x-2 px-2.5 py-1.5 sm:px-3 sm:py-1.5 rounded-lg bg-[#111111]/85 backdrop-blur-md border border-white/10 shadow-lg select-none whitespace-nowrap"
-            whileHover={{
-              scale: 1.05,
-              borderColor: "rgba(47, 128, 255, 0.4)",
-              boxShadow: "0 4px 20px rgba(47, 128, 255, 0.15)",
-            }}
-          >
-            <span className="text-sm">{badge.icon}</span>
-            <span className="text-[10px] sm:text-xs font-semibold text-white font-sans tracking-wide">
-              {badge.name}
-            </span>
-          </motion.div>
-        ))}
+        {TECH_BADGES.map((badge, idx) => {
+          const Icon = badge.icon;
+          return (
+            <motion.div
+              key={badge.name}
+              custom={idx}
+              variants={badgeVariants}
+              initial="hidden"
+              animate="visible"
+              className="flex items-center space-x-2 px-2.5 py-1.5 sm:px-3 sm:py-1.5 rounded-lg bg-[#111111]/85 backdrop-blur-md border border-white/10 shadow-lg select-none whitespace-nowrap"
+              whileHover={{
+                scale: 1.05,
+                borderColor: "rgba(47, 128, 255, 0.4)",
+                boxShadow: "0 4px 20px rgba(47, 128, 255, 0.15)",
+              }}
+            >
+              <Icon className="w-4 h-4 text-[#2F80FF]" strokeWidth={1.75} />
+              <span className="text-[10px] sm:text-xs font-semibold text-white font-sans tracking-wide">
+                {badge.name}
+              </span>
+            </motion.div>
+          );
+        })}
       </div>
 
       {/* ── 6. FLOATING QUOTE CARD (z-[10]) ── */}

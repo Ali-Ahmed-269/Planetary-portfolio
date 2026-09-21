@@ -1,6 +1,18 @@
 "use client";
 
 import { motion, Variants } from "framer-motion";
+import {
+  Zap,
+  Code2,
+  Palette,
+  Flame,
+  Database,
+  Sparkles,
+  Box,
+  GitBranch,
+  Cloud,
+  LucideIcon,
+} from "lucide-react";
 
 /* ─── Easing definitions ─────────────────────────────────────────────────── */
 const EASE_OUT: [number, number, number, number] = [0.215, 0.61, 0.355, 1];
@@ -41,7 +53,7 @@ interface SkillBar {
 }
 
 interface SkillCard {
-  icon: string;
+  icon: LucideIcon;
   name: string;
   category: string;
 }
@@ -56,15 +68,15 @@ const SKILL_BARS: SkillBar[] = [
 ];
 
 const SKILL_CARDS: SkillCard[] = [
-  { icon: "⚡", name: "Next.js", category: "Framework" },
-  { icon: "🔷", name: "TypeScript", category: "Language" },
-  { icon: "🎨", name: "Tailwind CSS", category: "Styling" },
-  { icon: "🟠", name: "Svelte", category: "Framework" },
-  { icon: "🗄️", name: "Supabase", category: "Backend" },
-  { icon: "🎭", name: "Framer Motion", category: "Animation" },
-  { icon: "🌐", name: "Three.js", category: "3D/WebGL" },
-  { icon: "🔧", name: "Git", category: "Version Control" },
-  { icon: "📦", name: "Vercel", category: "Deployment" },
+  { icon: Zap, name: "Next.js", category: "Framework" },
+  { icon: Code2, name: "TypeScript", category: "Language" },
+  { icon: Palette, name: "Tailwind CSS", category: "Styling" },
+  { icon: Flame, name: "Svelte", category: "Framework" },
+  { icon: Database, name: "Supabase", category: "Backend" },
+  { icon: Sparkles, name: "Framer Motion", category: "Animation" },
+  { icon: Box, name: "Three.js", category: "3D/WebGL" },
+  { icon: GitBranch, name: "Git", category: "Version Control" },
+  { icon: Cloud, name: "Vercel", category: "Deployment" },
 ];
 
 interface SkillsSectionProps {
@@ -87,7 +99,7 @@ export default function SkillsSection({ id = "skills" }: SkillsSectionProps) {
       />
 
       <div className="max-w-7xl mx-auto w-full px-6 lg:px-8 flex flex-col space-y-20 relative z-10">
-        
+
         {/* ── SECTION HEADER ── */}
         <motion.div
           variants={headerVariants}
@@ -114,7 +126,7 @@ export default function SkillsSection({ id = "skills" }: SkillsSectionProps) {
 
         {/* ── TWO COLUMN LAYOUT ── */}
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-16 lg:gap-24 items-start">
-          
+
           {/* LEFT COLUMN: Skill Bars */}
           <div className="flex flex-col space-y-8">
             <h3 className="text-2xl font-bold text-white font-display">
@@ -162,22 +174,25 @@ export default function SkillsSection({ id = "skills" }: SkillsSectionProps) {
               viewport={{ once: true, amount: 0.15 }}
               className="grid grid-cols-3 gap-3 sm:gap-4"
             >
-              {SKILL_CARDS.map((card) => (
-                <motion.div
-                  key={card.name}
-                  variants={cardVariants}
-                  whileHover={{ scale: 1.03 }}
-                  className="bg-[#0a0a0a] border border-white/10 rounded-xl p-3 sm:p-4 text-center transition-all duration-300 hover:border-[#2F80FF] hover:shadow-[0_0_20px_rgba(47,128,255,0.15)] cursor-default flex flex-col items-center justify-center space-y-2"
-                >
-                  <span className="text-2xl sm:text-3xl select-none">{card.icon}</span>
-                  <span className="text-white font-semibold text-xs sm:text-sm block">
-                    {card.name}
-                  </span>
-                  <span className="text-text-muted text-[9px] sm:text-[10px] font-medium font-mono uppercase tracking-wider block">
-                    {card.category}
-                  </span>
-                </motion.div>
-              ))}
+              {SKILL_CARDS.map((card) => {
+                const Icon = card.icon;
+                return (
+                  <motion.div
+                    key={card.name}
+                    variants={cardVariants}
+                    whileHover={{ scale: 1.03 }}
+                    className="bg-[#0a0a0a] border border-white/10 rounded-xl p-3 sm:p-4 text-center transition-all duration-300 hover:border-[#2F80FF] hover:shadow-[0_0_20px_rgba(47,128,255,0.15)] cursor-default flex flex-col items-center justify-center space-y-2"
+                  >
+                    <Icon className="w-6 h-6 text-[#2F80FF]" strokeWidth={1.75} />
+                    <span className="text-white font-semibold text-xs sm:text-sm block">
+                      {card.name}
+                    </span>
+                    <span className="text-text-muted text-[9px] sm:text-[10px] font-medium font-mono uppercase tracking-wider block">
+                      {card.category}
+                    </span>
+                  </motion.div>
+                );
+              })}
             </motion.div>
           </div>
 
