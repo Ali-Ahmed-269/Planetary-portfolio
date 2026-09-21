@@ -55,7 +55,7 @@ const PROJECTS: Project[] = [
     number: "01",
     name: "BUN X Astro",
     image: "/images/bun-x-astro.png",
-    tech: ["Astro", "Bun", "TypeScript"],
+    tech: ["Astro", "Bun", "TypeScript", "Express.js", "Drizzle ORM", "MySql"],
     tagColor: "blue",
     github: "https://github.com/dev-net-abdullah/bunxastro-site-builder",
   },
@@ -64,7 +64,7 @@ const PROJECTS: Project[] = [
     number: "02",
     name: "File Compressor",
     image: "/images/file-compressor-project.png",
-    tech: ["Next.js", "TypeScript"],
+    tech: ["HTML", "CSS", "JavaScript", "C++"],
     tagColor: "green",
     github: "https://github.com/Ali-Ahmed-269",
   },
@@ -73,7 +73,7 @@ const PROJECTS: Project[] = [
     number: "03",
     name: "ISMA IMS Portal",
     image: "/images/isma-ims-portal.png",
-    tech: ["Next.js", "Supabase"],
+    tech: ["Node.js", "Svelte 5 with Axios", "Express.js", "Drizzle ORM", "MySql"],
     tagColor: "orange",
     github: "https://github.com/qasim-mehar/ISMA-IMS-svelte-Client",
   },
@@ -82,7 +82,7 @@ const PROJECTS: Project[] = [
     number: "04",
     name: "PMS Project",
     image: "/images/PMS- project.png",
-    tech: ["Next.js", "Supabase", "Vercel"],
+    tech: ["C++"],
     tagColor: "purple",
     github: "https://github.com/Ali-Ahmed-269",
   },
@@ -90,8 +90,8 @@ const PROJECTS: Project[] = [
     id: "tulip-project",
     number: "05",
     name: "Tulip Guest Rooms",
-    image: "/images/tulip-project.png",
-    tech: ["Next.js", "Supabase"],
+    image: "/images/Tulip-Room.png",
+    tech: ["Next.js", "TypeScript", "Supabase"],
     tagColor: "pink",
     github: "https://github.com/Ali-Ahmed-269/TULIP-Guest-Rooms",
   },
@@ -100,7 +100,7 @@ const PROJECTS: Project[] = [
     number: "06",
     name: "Wordle Clone",
     image: "/images/wordle-project.png",
-    tech: ["Next.js", "Tailwind CSS"],
+    tech: ["C++"],
     tagColor: "yellow",
     github: "https://github.com/Ali-Ahmed-269",
   },
@@ -177,7 +177,7 @@ export default function ProjectsSection() {
       />
 
       <div className="max-w-7xl mx-auto w-full px-6 lg:px-8 flex flex-col space-y-16">
-        
+
         {/* ── SECTION HEADER ── */}
         <motion.div
           variants={headerVariants}
@@ -243,19 +243,19 @@ export default function ProjectsSection() {
                 transition={{ duration: 0.35, ease: EASE_SPRING }}
                 className="group relative flex flex-col bg-[#111111] border border-white/10 rounded-2xl overflow-hidden"
               >
-                
+
                 {/* Image Area */}
-                <div className="relative h-48 overflow-hidden">
+                <div className="relative h-48 overflow-hidden bg-[#0d0d0d]">
                   <Image
                     src={project.image}
                     alt={project.name}
                     fill
-                    className="object-cover transition-transform duration-500 group-hover:scale-105"
+                    className="object-contain transition-transform duration-500 group-hover:scale-105"
                     sizes="(max-width: 768px) 100vw, (max-width: 1024px) 50vw, 33vw"
                   />
 
                   {/* Subtle Project Number Watermark */}
-                  <span className="absolute right-4 top-2 text-8xl font-black text-white/5 tracking-tighter font-display select-none pointer-events-none">
+                  <span className="absolute right-4 top-2 text-8xl font-black text-white/5 tracking-tighter font-display select-none pointer-events-none z-10">
                     {project.number}
                   </span>
                 </div>
@@ -266,7 +266,7 @@ export default function ProjectsSection() {
                     <h3 className="text-xl font-bold text-white font-display group-hover:text-[#2F80FF] transition-colors duration-300">
                       {project.name}
                     </h3>
-                    
+
                     {/* Tech Stack Tags */}
                     <div className="flex flex-wrap gap-1.5">
                       {project.tech.map((t) => (
